@@ -1,26 +1,23 @@
 {% extends "layout.html" %}
 {% block head %}
-    <title>COMP90054 Alt Competition</title>
+    <title>CTF PacMan Competition</title>
 {%  endblock %}
 
 {% block body %}
     <main class="container" role="main">
     <br>
     <div class="jumbotron">
-        <h1 class="display-4">COMP90054 Alternative Pacman Competition</h1>
+        <h1 class="display-4">CTF PacMan Competition</h1>
         <br>
         <p>
-            I've made a alternative online competition for the Unimelb COMP90054 Pacman Contest, since testing once a day is really not enough when you're constantly making changes and want to know how it stands against other teams' agents.
+            This is an online competition site for the UC Berkeley CS188 Intro to AI course's <a href="https://inst.eecs.berkeley.edu/~cs188/pacman/contest.html">Capture the Flag Contest</a>, allowing teams and individuals to test their PacMan agents anonymously, without exposing their code.
         </p>
         <p>
-            Please don't abuse this. I slapped this together in a couple of hours and it will probably break even if it's just left to sit idle for the next 24 hours.
-        </p>
-        <p>
-            (Bit late I know but, hey, it's something)
+            Please don't abuse this. The site in its current state is unstable, and overloading it with requests or excessive submissions helps no one.
         </p>
         <br>
         <p>
-            Use this form to submit your own agent to compete against other teams. Please submit a .py file renamed to your team name. You can reupload your agent multiple times, as long as it has the same team name it will overwrite your previously uploaded version.
+            Use this form to submit your own agent to compete against other teams' submissions. Please submit a .py file renamed to your team name. You can reupload your agent multiple times, as long as it has the same team name it will overwrite your previously uploaded version.
         </p>
         <form method=post action="/submit-agent" enctype=multipart/form-data>
             <div class="form-row">
