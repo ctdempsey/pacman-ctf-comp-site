@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>Competition Results</title>
+{%  endblock %}
+
+{% block body %}
+<div class="container">
+<br>
+<h1 class="display-4">Competition Results</h1>
+<br>
+<div class="row">
+<div class="col-md-6">
+<h2>Logs</h2>
+<br>
+{% for l in logs %}
+<a href="{{ url_for('download_result', filename=l) }}">{{ l }}</a><br>
+{% endfor %}
+</div>
+<div class="col-md-6">
+<h2>Replays</h2>
+<br>
+{% for r in replays %}
+<a href="{{ url_for('download_result', filename=r) }}">{{ r }}</a><br>
+{% endfor %}
+</div>
+</div>
+</div>
+{%  endblock %}

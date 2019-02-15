@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>COMP90054 Alt Competition</title>
+{%  endblock %}
+
+{% block body %}
+    <main class="container" role="main">
+    <br>
+    <div class="jumbotron">
+        <h1 class="display-4">COMP90054 Alternative Pacman Competition</h1>
+        <br>
+        <p>
+            I've made a alternative online competition for the Unimelb COMP90054 Pacman Contest, since testing once a day is really not enough when you're constantly making changes and want to know how it stands against other teams' agents.
+        </p>
+        <p>
+            Please don't abuse this. I slapped this together in a couple of hours and it will probably break even if it's just left to sit idle for the next 24 hours.
+        </p>
+        <p>
+            (Bit late I know but, hey, it's something)
+        </p>
+        <br>
+        <p>
+            Use this form to submit your own agent to compete against other teams. Please submit a .py file renamed to your team name. You can reupload your agent multiple times, as long as it has the same team name it will overwrite your previously uploaded version.
+        </p>
+        <form method=post action="/submit-agent" enctype=multipart/form-data>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <input type=file name=file class="form-control-file">
+                </div>
+                <div class="col">
+                    <input type=submit value=Upload class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+        <br>
+        <p>
+            Use this form to request a match between two uploaded agents. The request will be put into a queue, and once the match is played out the logs and replays can be downloaded from the <a href="{{ url_for('results') }}">Results</a> page.
+        </p>
+        <p class="lead">
+        Number of active match requests: {{ requests }}
+        </p>
+        <form method=post action="/submit-request">
+            <div class="form-row">
+                <div class="col">
+                    <select name=team1 class="form-control">
+                        {% for a in agents %}
+                        <option value="{{ a }}">{{ a }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                VS
+                <div class="col">
+                    <select name=team2 class="form-control">
+                        {% for a in agents %}
+                        <option value="{{ a }}">{{ a }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <input type=submit value=Submit class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+        <br>
+        {% for message in get_flashed_messages() %}
+        <p style="color: red;">{{ message }}</p>
+        {% endfor %}
+    </div>
+    </main>
+{%  endblock %}
